@@ -2,8 +2,11 @@
 🕒 Modalités d'Évaluation
 
 Durée : 40 minutes (Strict).
+
 Contexte : Live Coding (L'apprenant code projetté au tableau devant le formateur).
+
 Objectif : Valider les acquis de base Laravel (Route, Controller, Migration, Model, Blade).
+
 📝 Cahier des Charges Commun (Pour tous les sujets)
 L'application est une simple Liste d'objets (Pattern "Todo List"). L'apprenant doit implémenter les fonctionnalités suivantes :
 
