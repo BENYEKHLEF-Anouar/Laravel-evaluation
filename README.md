@@ -1,293 +1,98 @@
-# Évaluation Laravel – Live Coding
+---
+marp: true
+theme: default
+_class: lead
+paginate: true
+backgroundColor: #f9f9f9ff
+style: |
+  section {
+    font-size: 22px;
+    color: #040404ff;
+    line-height: 1.5;
+    padding: 2em;
+    
+  }
+  h1, h2, h3 {
+    color: #38bdf8;
+    font-weight: 700;
+    margin-bottom: 0.6em;
+  }
+  h1 { font-size: 2.8em; }
+  h2 { font-size: 2.2em; }
+  h3 { font-size: 1.6em; color: #3d3d3dff; }
+  p, li {
+    font-size: 1.15em;
+    margin-bottom: 0.6em;
+  }
+  ul, ol {
+    margin-left: 1.4em;
+    margin-bottom: 1.2em;
+  }
+  img {
+    max-width: 100%;
+    display: block;
+    margin:  0em auto;
+    border-radius: 8px;
 
-## 🕒 Modalités d’évaluation
-
-* **Durée** : 40 minutes (**strict**)
-* **Format** : Live Coding
-  (L’apprenant code en direct, projeté au tableau, devant le formateur)
-* **Objectif pédagogique** :
-  Valider les acquis fondamentaux de **Laravel** :
-
-  * Routes
-  * Controllers
-  * Migrations
-  * Models
-  * Blade (vues)
+  }
+ 
 
 ---
 
-## 📝 Cahier des charges commun
 
-*(Applicable à tous les sujets)*
 
-L’application à réaliser est une **liste d’objets** suivant le pattern **Todo List**.
+# **Présentation Projet-technique**
+### Memo Notepad (Notes,Categories)
+**Réalisé par :** BENYEKHLEF Anouar
+**Encadré par :** M. ESSARRAJ Fouad
 
-### 1. Architecture Base de Données
 
-* Création d’une **migration**
-
-  * Une table
-  * Minimum **2 champs**
-* Création du **Model** associé
-* Création d’un **Seeder**
-
-  * Insertion de **5 données factices**
 
 ---
 
-### 2. Lecture (Read)
+## Travail à faire
 
-* Route : `/` ou `/objets`
-* Méthode Controller : `index()`
-* Vue Blade :
-
-  * Affichage de la liste
-  * Format libre : tableau ou cartes
+### Développer l'Application Memo Notepad
+*   **Partie Publique:** Interface for visitors to view notes. Features: Title search, Category filter, Pagination (10 items/page).
+*   **Partie Admin:** Secure dashboard for CRUD operations. Features: Modals for add/edit, AJAX for asynchronous updates.
 
 ---
 
-### 3. Création (Create)
+## Contexte
 
-* Formulaire simple (en haut de page)
-* Route : `POST`
-* Méthode Controller : `store()`
-* Validation :
-
-  * Champs requis (`required`)
+*   **Processus 2TUP:** Project follows the 2TUP (Y Development Process) methodology, separating Functional, Technical, and Realization branches.
+*   **Solidification des Compétences:** Focus on reinforcing Laravel 12 skills without AI tools, building on previous Solicode experience.
 
 ---
 
-### 4. Suppression (Delete)
+## Besoin - Analyse Technique
 
-* Bouton **"Supprimer"** pour chaque élément
-* Route : `DELETE`
-* Méthode Controller : `destroy()`
+### Stack
+#### Front-End
+- **Blade:** Templates réutilisables (components, layouts).
+- **Tailwind CSS:** Développement rapide, responsive.
+- **Preline UI:** Composants intégrés.
+- **Lucide:** Icones.
 
----
+#### Back-End et Architecture
+- **Framework:** Laravel 12.
+- **Architecture N-Tiers:**
+  - **Controller:** Requêtes HTTP.
+  - **Service:** Logique métier.
+  - **Model:** Base de données.
 
-## 🎲 Sujets (20 variantes)
+### Features
+*   **CRUD:** Create, Read, Update, Delete.
+*   **AJAX:** Dynamic interactions (e.g., Modals) without page reloads.
 
-> Chaque apprenant tire **un sujet au sort**.
-> La logique technique reste identique, seul le **contexte métier** change.
-
----
-
-### 1. 📝 Tâches (To-Do List)
-
-* **Classe** : `Task`
-* **Champs** :
-
-  * `title` (string)
-  * `is_done` (boolean, default: false)
-* **Scénario** : Liste de tâches à faire dans la journée
-
----
-
-### 2. 🛒 Courses (Shopping List)
-
-* **Classe** : `Product`
-* **Champs** :
-
-  * `name` (string)
-  * `quantity` (integer)
-* **Scénario** : Articles à acheter au supermarché
+### Naming Conventions
+- **Controllers:** `PascalCase` + `Controller` suffix (e.g., `NoteController`).
+- **Models:** `PascalCase` singular (e.g., `Note`).
+- **Tables:** `snake_case` plural (e.g., `notes`).
+- **Variables/Methods:** `camelCase` (e.g., `getNotes`).
 
 ---
 
-### 3. 🎬 Films à voir (Watchlist)
+## Analyse Fonctionnelle
 
-* **Classe** : `Movie`
-* **Champs** :
-
-  * `title` (string)
-  * `director` (string)
-* **Scénario** : Films à regarder le week-end
-
----
-
-### 4. 📚 Livres (Reading List)
-
-* **Classe** : `Book`
-* **Champs** :
-
-  * `title` (string)
-  * `author` (string)
-* **Scénario** : Livres lus ou à lire
-
----
-
-### 5. 👥 Invités (Guest List)
-
-* **Classe** : `Guest`
-* **Champs** :
-
-  * `name` (string)
-  * `status` (string : `confirmé`, `en attente`)
-* **Scénario** : Liste d’invités pour un événement
-
----
-
-### 6. 🐞 Bugs (Issue Tracker)
-
-* **Classe** : `Issue`
-* **Champs** :
-
-  * `description` (text)
-  * `severity` (string : `low`, `critical`)
-* **Scénario** : Suivi de bugs d’un projet
-
----
-
-### 7. 💡 Idées (Brainstorming)
-
-* **Classe** : `Idea`
-* **Champs** :
-
-  * `title` (string)
-  * `category` (string : `App`, `Business`, `Art`)
-* **Scénario** : Boîte à idées de projets
-
----
-
-### 8. 📞 Contacts (Répertoire)
-
-* **Classe** : `Contact`
-* **Champs** :
-
-  * `name` (string)
-  * `phone_number` (string)
-* **Scénario** : Carnet d’adresses minimaliste
-
----
-
-### 9. 🎵 Musiques (Playlist)
-
-* **Classe** : `Song`
-* **Champs** :
-
-  * `title` (string)
-  * `artist` (string)
-* **Scénario** : Playlist de favoris
-
----
-
-### 10. 📅 Rendez-vous (Agenda)
-
-* **Classe** : `Appointment`
-* **Champs** :
-
-  * `client_name` (string)
-  * `appointment_time` (datetime)
-* **Scénario** : RDV quotidiens (médecin, coiffeur)
-
----
-
-### 11. 📝 Notes (Memo)
-
-* **Classe** : `Note`
-* **Champs** :
-
-  * `content` (text)
-  * `color` (string : `yellow`, `blue`)
-* **Scénario** : Post-its virtuels
-
----
-
-### 12. 🎯 Objectifs (Goals)
-
-* **Classe** : `Goal`
-* **Champs** :
-
-  * `description` (string)
-  * `deadline` (date)
-* **Scénario** : Résolutions annuelles
-
----
-
-### 13. 💶 Dépenses (Expense Tracker)
-
-* **Classe** : `Expense`
-* **Champs** :
-
-  * `label` (string)
-  * `amount` (decimal)
-* **Scénario** : Suivi du budget quotidien
-
----
-
-### 14. 🔗 Favoris (Bookmarks)
-
-* **Classe** : `Bookmark`
-* **Champs** :
-
-  * `url` (string)
-  * `description` (string)
-* **Scénario** : Liens à lire plus tard
-
----
-
-### 15. 🛠️ Compétences (Skills)
-
-* **Classe** : `Skill`
-* **Champs** :
-
-  * `name` (string)
-  * `level` (integer : 1–5)
-* **Scénario** : Compétences d’un développeur
-
----
-
-### 16. 📦 Inventaire (Stock)
-
-* **Classe** : `Item`
-* **Champs** :
-
-  * `reference` (string)
-  * `stock_count` (integer)
-* **Scénario** : Gestion de stock simple
-
----
-
-### 17. 🎓 Étudiants (Présence)
-
-* **Classe** : `Student`
-* **Champs** :
-
-  * `full_name` (string)
-  * `is_present` (boolean)
-* **Scénario** : Appel en classe
-
----
-
-### 18. 💬 Citations (Quotes)
-
-* **Classe** : `Quote`
-* **Champs** :
-
-  * `text` (text)
-  * `author_name` (string)
-* **Scénario** : Citations inspirantes
-
----
-
-### 19. 🥗 Ingrédients (Recette)
-
-* **Classe** : `Ingredient`
-* **Champs** :
-
-  * `name` (string)
-  * `quantity` (string : `200g`, `1L`)
-* **Scénario** : Préparation d’une recette
-
----
-
-### 20. 🏆 Scores (Leaderboard)
-
-* **Classe** : `Score`
-* **Champs** :
-
-  * `player_name` (string)
-  * `points` (integer)
-* **Scénario** : Classement de tournoi
-
----
+![w:600 Use Case Diagram](./images/notepad_usecase.png)
